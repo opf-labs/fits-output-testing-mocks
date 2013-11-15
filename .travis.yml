@@ -20,5 +20,6 @@ install:
   - cd fits-output-testing-mocks
 script:
   - mvn test -B
+  - mvn package
   - cd ../fits
   - ../fits-blackbox-testing/bash-scripts/fits-test.sh ../fits-output-testing-mocks/target/fits-output-testing-mock-0.0.1-SNAPSHOT-jar-with-dependencies.jar ../fits-testing/corpora/files/
