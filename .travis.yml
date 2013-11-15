@@ -9,3 +9,8 @@ install:
   - git clone https://github.com/peshkira/fits-blackbox-testing.git
   - git clone https://github.com/openplanets/fits.git
   - cd fits-output-testing-mocks
+script:
+  - mvn test -B
+  - cd ../fits
+  - git fetch
+  - git checkout -b origin/unit-testing
