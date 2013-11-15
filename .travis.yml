@@ -8,4 +8,4 @@ install:
   - cd ..
   - git clone https://github.com/peshkira/fits-blackbox-testing.git
   - git clone https://github.com/openplanets/fits.git
-  - cd ../fits-output-testing-mocks
+  - cd fits-output-testing-mocks
