@@ -70,18 +70,6 @@ public final class FitsOutputTestingMock {
 					System.err.println("Test failed, test set and master lengths differ for " + name);
 					return 1;
 				}
-				try (InputStream inMaster = new FileInputStream(master); InputStream inTest = new FileInputStream(test)) {
-					String masterMd5 = DigestUtils.md5Hex(inMaster);
-					String testMd5 = DigestUtils.md5Hex(inTest);
-					if (!masterMd5.equals(testMd5)) {
-						System.err.println("Test failed, test set and master MD5s differ for " + name);
-						return 1;
-					}
-				} catch (IOException excep) {
-					System.err.println("Error reading digest, test abandoned.");
-					excep.printStackTrace();
-					return 125;
-				}
 			}
 		}
 		return 0;
