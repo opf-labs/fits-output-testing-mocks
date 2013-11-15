@@ -7,10 +7,18 @@ install:
   - pwd
   - cd ..
   - git clone https://github.com/peshkira/fits-blackbox-testing.git
+  - cd fits-blackbox-testing
+  - git fetch
+  - git checkout -b origin/invoke-test-tool
+  - cd ..
   - git clone https://github.com/openplanets/fits.git
+  - cd fits
+  - git fetch
+  - git checkout -b origin/unit-testing
+  - cd ..
+  - git clone https://github.com/keeps/fits-testing.git
   - cd fits-output-testing-mocks
 script:
   - mvn test -B
   - cd ../fits
-  - git fetch
-  - git checkout -b origin/unit-testing
+  - ../fits-blackbox-testing/bash-scripts/fits-test.sh ../fits-output-testing-mocks/target/fits-output-testing-mock-0.0.1-SNAPSHOT-jar-with-dependencies.jar ../fits-testing/corpora/files/
