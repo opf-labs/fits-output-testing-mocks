@@ -3,23 +3,30 @@ language: java
 jdk:
   - oraclejdk7
   - openjdk7
+# Pre-install - checkout the dependencies
 install:
-  - pwd
+  # Get the fits-blackbox-testing scripts to run the harness
   - cd ..
   - git clone https://github.com/peshkira/fits-blackbox-testing.git
+  # For now check out the development branch
   - cd fits-blackbox-testing
   - git fetch
   - git checkout -b invoke-test-tool origin/invoke-test-tool
+  # Clone the FITS repository
   - cd ..
   - git clone https://github.com/openplanets/fits.git
   - cd fits
   - git fetch
   - git checkout -b unit-testing origin/unit-testing
+  # Check put the test corpora from the KEEPS repo
   - cd ..
   - git clone https://github.com/keeps/fits-testing.git
   - cd fits-output-testing-mocks
+# The test itself
 script:
+  # Build and package the Mock test tool
   - mvn test -B
   - mvn package
+  # Move into the checked out FITD unit-testing branch and run the tests
   - cd ../fits
   - ../fits-blackbox-testing/bash-scripts/fits-test.sh ../fits-output-testing-mocks/target/fits-output-testing-mock-0.0.1-SNAPSHOT-jar-with-dependencies.jar ../fits-testing/corpora/files/
