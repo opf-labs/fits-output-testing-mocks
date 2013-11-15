@@ -9,12 +9,12 @@ install:
   - git clone https://github.com/peshkira/fits-blackbox-testing.git
   - cd fits-blackbox-testing
   - git fetch
-  - git checkout -b origin/invoke-test-tool
+  - git checkout -b invoke-test-tool origin/invoke-test-tool
   - cd ..
   - git clone https://github.com/openplanets/fits.git
   - cd fits
   - git fetch
-  - git checkout -b origin/unit-testing
+  - git checkout -b unit-testing origin/unit-testing
   - cd ..
   - git clone https://github.com/keeps/fits-testing.git
   - cd fits-output-testing-mocks
